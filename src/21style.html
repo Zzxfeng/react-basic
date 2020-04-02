@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>react</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="container"></div>
+    <script type="text/babel">
+        class StyleF extends React.Component{
+            render(){
+				const myStyle = {fontSize: "16px",color: "red"} //也可以赋值给一个变量
+                return (
+                    <div>
+                        <h1 style={{fontSize: "16px",color: "red"}}>开源、免费、专业、简单</h1>
+                    </div>
+                )
+            }
+        }
+		ReactDOM.render(
+			<StyleF/>,
+			document.getElementById("container")
+		);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>context不推荐使用</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/prop-types/15.6.1/prop-types.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="container"></div>
+    <script type="text/babel">
+        class Index extends React.Component{
+            static childContextTypes = {
+                themeColor: PropTypes.string
+            }
+            constructor(){
+                super()
+                this.state = {
+                    themeColor:'red'
+                }
+            }
+            getChildContext (){
+                return { themeColor: this.state.themeColor }
+            }
+            render(){
+                return <Title></Title>
+            }
+        }
+        class Title extends React.Component{
+            static contextTypes = {
+                themeColor: PropTypes.string
+            }
+            render(){
+                return <h1 style={{color:this.context.themeColor}}>开源、免费、专业、简单</h1>
+            }
+        }
+		ReactDOM.render(
+			<Index/>,
+			document.getElementById("container")
+		);
+	</script>
+</body>
+
+</html>

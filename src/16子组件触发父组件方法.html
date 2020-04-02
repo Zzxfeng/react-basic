@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>react</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="container"></div>
+    <script type="text/babel">
+        class Content extends React.Component{
+            render(){
+                return (
+                    <div>
+                        <button onClick={this.props.taggleClick}>点击切换</button>
+                        <h1>{this.props.content}</h1>
+                    </div>
+                )
+            }
+        }
+        class Message extends React.Component{
+            constructor(props){
+                super(props)
+                this.state = {
+                    taggleMsg:true
+                }
+            }
+            changeValue(){
+                // 注意事件this绑定
+                this.setState({
+                    taggleMsg:!this.state.taggleMsg
+                })
+            }
+            render(){
+                return <Content content={this.state.taggleMsg?"初始化数据":"成功切换数据"} taggleClick={this.changeValue.bind(this)}/>
+            }
+        }
+		ReactDOM.render(
+			<Message/>,
+			document.getElementById("container")
+		);
+	</script>
+</body>
+
+</html>

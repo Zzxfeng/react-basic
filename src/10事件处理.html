@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>事件处理</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        class TiggleBtn extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    isTiggleOn: true
+                }
+                // 注意事件this指向问题
+                this.triggerBtn = this.triggerBtn.bind(this)
+            }
+            triggerBtn() {
+                this.setState({
+                    isTiggleOn:!this.state.isTiggleOn
+                })
+            }
+            render() {
+                return (
+                    <button onClick={this.triggerBtn}>{this.state.isTiggleOn ? "YES" : "NO"}</button>
+                )
+            }
+        }
+        ReactDOM.render(
+            <TiggleBtn />,
+            document.getElementById("container")
+        );
+    </script>
+</body>
+
+</html>

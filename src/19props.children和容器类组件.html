@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>react</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        .box {
+            width: 60%;
+            padding: 15px 0;
+            margin: 30px auto;
+            text-align: center;
+            border: 1px solid #c9d653;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        function Card(props) {
+            // 使用props传值
+            return <div className="box">{props.content}</div>
+        }
+        function Card2(props){
+            // 相当于vue中的插槽
+            console.log(props.children) //array
+            return <div className="box">{props.children}</div>
+        }
+        function Card3(props) {
+            // 相当于vue中的插槽
+            return (
+                <div className="box">
+                    <div>{props.children[0]}</div>
+                    <div>{props.children[1]}</div>
+                </div>
+            )
+        }
+        ReactDOM.render(
+            <div>
+                <Card content={<h1>开源、免费、专业、简单</h1>} />
+                <Card2>
+                    <h1>开源、免费、专业、简单</h1>
+                    <h2>开源、免费、专业、简单</h2>
+                    <h3>开源、免费、专业、简单</h3>   
+                </Card2>
+                <Card3>
+                    <h1>开源、免费、专业、简单</h1>
+                    <h2>开源、免费、专业、简单</h2>
+                </Card3>   
+            </div>,
+            document.getElementById("container")
+        );
+    </script>
+</body>
+
+</html>

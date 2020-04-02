@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>react</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="container"></div>
+    <script type="text/babel">
+        class TestRef extends React.Component{
+            componentDidMount(){
+                this.autoFocus.focus()
+            }
+            handleClick(){
+                this.refs.FocusInput.focus()
+            }
+            render(){
+                // ref可以使用函数返回值的形式
+                return(
+                    <div>
+                        <input type="text" ref={(autoFocus)=>this.autoFocus = autoFocus}/>
+                        <input type="text" ref="FocusInput"/>
+                        <input type="button" value="点击获取焦点" onClick={this.handleClick.bind(this)}/>
+                    </div>
+                )
+            }
+        }
+		ReactDOM.render(
+			<TestRef/>,
+			document.getElementById("container")
+		);
+	</script>
+</body>
+
+</html>

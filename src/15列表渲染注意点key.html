@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>react</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="container"></div>
+    <script type="text/babel">
+        function ListItem(props){
+            // 此处不要设置key，key要在兄弟元素间设置
+            return <li>{props.value}</li>
+        }
+        function NumberList(props){
+            const items = props.number.map(value=>{
+                // 此处使用key进行标示
+                return <ListItem value={value} key={value.toString()}/>
+            })
+            return(
+                <ul>{items}</ul>
+            )
+        }
+        const number = [1,2,3,4,5]
+		ReactDOM.render(
+			<NumberList number={number}/>,
+			document.getElementById("container")
+		);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>阻止组件渲染</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        button {
+            height: 40px;
+            width: 200px;
+        }
+
+        .warning {
+            background-color: red;
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+
+            font-size: 14pt;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        function Warning(props) {
+            if (!props.warn) {
+                return null;//返回null则不渲染
+            }
+            return <h1 className="warning">警告，请注意</h1>
+        }
+        class Page extends React.Component{
+            constructor(props){
+                super(props)
+                this.toggleClick = this.toggleClick.bind(this)
+                this.state = {
+                    isShow:true
+                }
+            }
+            toggleClick(){
+                this.setState({
+                    isShow:!this.state.isShow
+                })
+            }
+            render(){
+                return(
+                    <div>
+                        <Warning warn={this.state.isShow}/>
+                        <button onClick={this.toggleClick}>{this.state.isShow?"隐藏":"显示"}</button>
+                    </div>
+                )
+               
+            }
+        }
+        ReactDOM.render(
+            <Page/>,
+            document.getElementById("container")
+        );
+    </script>
+</body>
+
+</html>

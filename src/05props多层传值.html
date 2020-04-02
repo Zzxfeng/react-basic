@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>react元素渲染</title>
+		<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+		<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+		<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="text/babel">
+			// ReactDom - app函数 - es6 class类
+            const stylef = {color:'red',textAlign:'center'};
+            class Name extends React.Component{
+                render(){
+                    return <h1 style={stylef}>网站名称：{this.props.name}</h1>
+                }
+            }
+            class Url extends React.Component{
+                render(){
+                    return <h1>网站Url：{this.props.url}</h1>
+                }
+            }
+            class NickName extends React.Component{
+                render(){
+                    return <h1>网站昵称：{this.props.nickname}</h1>
+                }
+            }
+            function App(props){
+                return (
+                    <div>
+                        <Name name={props.name}></Name>
+                        <Url url={props.url}></Url>
+                        <NickName nickname={props.nickname}></NickName>
+                    </div>
+                )
+            }
+            ReactDOM.render(
+                <App name={"Zz博客"} url={"https://zzxfeng.gitee.io/"} nickname={"小风"}>{/*注释写在花括号中*/}</App>,
+                document.getElementById("container")
+            )
+		</script>
+	</body>
+</html>
