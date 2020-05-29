@@ -1,7 +1,15 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: Alex
+ * @Date: 2020-03-04 11:07:58
+ * @LastEditors: Alex
+ * @LastEditTime: 2020-05-28 14:18:57
+-->
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
 		<title>react元素渲染</title>
 		<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
 		<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
@@ -9,19 +17,15 @@
 	</head>
 	<body>
 		<div id="container"></div>
-        <script type="text/babel">
-        function Clock(props){// props属性集合
-            return (
-                <h1>现在是:{props.date.toLocaleTimeString()}</h1>
-            );
-        }
-        function tick(){
-            ReactDOM.render(
-				<Clock date={new Date()}></Clock>,
-				document.getElementById("container")
-			);
-        }
-        setInterval(tick,1000)
+		<script type="text/babel">
+			function Clock(props) {
+				// props属性集合，封装的模板
+				return <h1>现在是:{props.date.toLocaleTimeString()}</h1>;
+			}
+			function tick() {
+				ReactDOM.render(<Clock date={new Date()}></Clock>, document.getElementById("container"));
+			}
+			setInterval(tick, 1000);
 		</script>
 	</body>
 </html>
